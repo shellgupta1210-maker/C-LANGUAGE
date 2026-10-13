@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main() {
+    char str[100];
+
+    // Read a string from the user (accepts spaces up to 99 characters)
+    printf("Enter a string: ");
+    scanf("%99[^\n]", str);
+
+    // 1. Find the length of the string without using strlen()
+    int len = 0;
+    while (str[len] != '\0') {
+        len++;
+    }
+
+    // 2. Reverse the string in-place using two pointers
+    int start = 0;
+    int end = len - 1;
+
+    while (start < end) {
+        // Swap characters at 'start' and 'end' positions
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+
+        // Move pointers closer to the center
+        start++;
+        end--;
+    }
+
+    // 3. Print the reversed string
+    printf("Reversed string: %s\n", str);
+
+    return 0;
+}
